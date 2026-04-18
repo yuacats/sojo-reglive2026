@@ -67,7 +67,7 @@ body {
 /* --- Hero (フライヤーそのまま表示) --- */
 
 .hero {
-    background: var(--color-primary);
+    background: #f0e6d6;
 }
 
 .hero-flyer {
