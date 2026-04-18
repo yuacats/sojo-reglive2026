@@ -6,7 +6,13 @@
     <style>
         @page {
             size: A4;
-            margin: 18mm 16mm 14mm 16mm;
+            margin: 10mm 14mm 10mm 14mm;
+            @top-left { content: none; }
+            @top-center { content: none; }
+            @top-right { content: none; }
+            @bottom-left { content: none; }
+            @bottom-center { content: none; }
+            @bottom-right { content: none; }
         }
 
         * {
@@ -16,36 +22,44 @@
         }
 
         body {
-            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
-            font-size: 10pt;
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Meiryo', sans-serif;
+            font-size: 10.5pt;
             color: #1a1a1a;
-            line-height: 1.6;
+            line-height: 1.45;
         }
 
         /* --- Header --- */
 
         .header {
-            text-align: center;
-            margin-bottom: 14pt;
+            text-align: left;
+            margin-bottom: 12pt;
+        }
+
+        .header-greeting {
+            font-size: 13pt;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 0.05em;
+            margin-bottom: 8pt;
         }
 
         .header-band {
             font-size: 8pt;
             letter-spacing: 0.3em;
-            color: #555;
+            color: #1a1a1a;
             margin-bottom: 2pt;
         }
 
         .header-title {
-            font-size: 14pt;
-            font-weight: 700;
-            margin-bottom: 8pt;
+            font-size: 11pt;
+            font-weight: 500;
+            margin-bottom: 4pt;
         }
 
         .header-intro {
-            font-size: 9pt;
-            color: #333;
-            line-height: 1.8;
+            font-size: 10.5pt;
+            color: #1a1a1a;
+            line-height: 1.6;
         }
 
         /* --- Divider --- */
@@ -53,20 +67,35 @@
         hr {
             border: none;
             border-top: 1px solid #ccc;
-            margin: 12pt 0;
+            margin: 14pt 0;
         }
 
         /* --- Questions --- */
 
         .question {
-            margin-bottom: 14pt;
+            margin-bottom: 16pt;
             page-break-inside: avoid;
         }
 
         .question-label {
-            font-weight: 700;
-            font-size: 10pt;
-            margin-bottom: 5pt;
+            font-weight: 500;
+            font-size: 10.5pt;
+            margin-bottom: 4pt;
+        }
+
+        .name-job-row {
+            display: flex;
+            gap: 24pt;
+        }
+
+        .question-label-inline {
+            font-weight: 500;
+            font-size: 10.5pt;
+        }
+
+        .question-label-inline::before {
+            content: '◇';
+            margin-right: 3pt;
         }
 
         .question-label::before {
@@ -88,7 +117,7 @@
             display: flex;
             align-items: baseline;
             gap: 4pt;
-            font-size: 9.5pt;
+            font-size: 10.5pt;
             min-width: 140pt;
         }
 
@@ -130,7 +159,7 @@
 
         .sub-input-label {
             font-size: 8.5pt;
-            color: #555;
+            color: #1a1a1a;
         }
 
         /* Options in a column (for long lists) */
@@ -147,6 +176,53 @@
             grid-template-columns: 1fr 1fr 1fr;
         }
 
+        /* Checkbox + name + reason in one row */
+
+        .option-with-reason {
+            display: flex;
+            align-items: baseline;
+            gap: 4pt;
+            margin-top: 3pt;
+            margin-left: 14pt;
+        }
+
+        .option-name {
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .option-reason {
+            flex: 1;
+            border-bottom: 1px solid #aaa;
+            min-height: 22pt;
+        }
+
+        .song-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(5, auto);
+            grid-auto-flow: column;
+            gap: 0 16pt;
+            margin-left: 14pt;
+        }
+
+        .song-grid .option-with-reason {
+            margin-left: 0;
+        }
+
+        .player-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(9, auto);
+            grid-auto-flow: column;
+            gap: 0 16pt;
+            margin-left: 14pt;
+        }
+
+        .player-grid .option-with-reason {
+            margin-left: 0;
+        }
+
         /* Reason area */
 
         .reason {
@@ -156,7 +232,7 @@
 
         .reason-label {
             font-size: 8.5pt;
-            color: #555;
+            color: #1a1a1a;
         }
 
         .write-lines {
@@ -165,53 +241,71 @@
         }
 
         .write-line {
-            border-bottom: 1px solid #bbb;
-            height: 22pt;
+            height: 18pt;
+            width: 100%;
+        }
+
+        .write-line-large {
+            height: 120pt;
             width: 100%;
         }
 
         .write-line-short {
-            border-bottom: 1px solid #bbb;
-            height: 22pt;
+            height: 18pt;
             width: 200pt;
         }
 
         /* --- Footer --- */
 
-        .footer {
-            margin-top: 16pt;
+        .back-page {
+            padding-top: 18pt;
+        }
+
+        .page-continue {
             text-align: center;
-            font-size: 9pt;
-            color: #555;
+            font-size: 10pt;
+            margin-top: 12pt;
+        }
+
+        .footer {
+            margin-top: 24pt;
+            display: flex;
+            gap: 140pt;
+            font-size: 10.5pt;
+            color: #1a1a1a;
         }
 
         .footer-thanks {
-            font-weight: 700;
-            font-size: 10pt;
+            font-weight: 400;
             color: #1a1a1a;
-            margin-bottom: 4pt;
         }
 
-        .qr-area {
-            margin-top: 10pt;
-            text-align: center;
+        .qr-row {
+            display: flex;
+            align-items: center;
+            gap: 10pt;
+            margin: 8pt 0;
         }
 
-        .qr-placeholder {
-            display: inline-block;
-            width: 80pt;
-            height: 80pt;
-            border: 2px dashed #aaa;
-            line-height: 80pt;
-            text-align: center;
-            font-size: 8pt;
-            color: #999;
+        .qr-image {
+            width: 72pt;
+            height: 72pt;
+            flex-shrink: 0;
+        }
+
+        .qr-text {
         }
 
         .qr-caption {
-            font-size: 8pt;
-            color: #555;
-            margin-top: 3pt;
+            font-size: 10.5pt;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .qr-hint {
+            font-size: 10pt;
+            color: #1a1a1a;
+            margin-top: 2pt;
         }
 
         @media print {
@@ -222,11 +316,18 @@
 <body>
 
 <div class="header">
-    <p class="header-band">STUDIO ONE JAZZ ORCHESTRA</p>
-    <h1 class="header-title">LIVE 2026 アンケート</h1>
+    <p class="header-greeting">Thank you for coming!</p>
+    <div class="qr-row">
+        <img src="qrcode.png" alt="QR Code" class="qr-image">
+        <div class="qr-text">
+            <p class="qr-caption">◀︎ プログラム・曲目解説はこちら</p>
+            <p class="qr-hint">演奏中やアンケート記入時にご活用ください</p>
+        </div>
+    </div>
     <p class="header-intro">
-        本日はStudio One Jazz Orchestra LIVE 2026へのご来場、誠にありがとうございます。<br>
-        今後の活動の参考のため、アンケートへのご協力をお願いいたします。差し支えのない範囲でご記入ください。
+        本日は Studio One Jazz Orchestra LIVE 2026へのご来場、誠にありがとうございます。<br>
+        今後の活動の参考のため、アンケートへのご協力をお願いいたします。<br>
+        差し支えのない範囲でご記入ください。終演後、受付にて回収いたします。
     </p>
 </div>
 
@@ -234,117 +335,108 @@
 
 <!-- Q1 -->
 <div class="question">
-    <p class="question-label">今回のライブの情報をどこでお知りになりましたか。</p>
+    <p class="question-label">今回のライブの情報をどこでお知りになりましたか？</p>
     <div class="options" style="flex-direction:column; gap:3pt;">
-        <div class="option"><span class="circle"></span> メンバー（ 紹介者名：<span style="border-bottom:1px solid #999; display:inline-block; width:120pt;">&nbsp;</span> ）からの紹介</div>
-        <div class="option"><span class="circle"></span> SNS ［ X ・ Instagram ・ Facebook ・ 他（&nbsp;<span style="border-bottom:1px solid #999; display:inline-block; width:60pt;">&nbsp;</span>&nbsp;）］</div>
-        <div class="option"><span class="circle"></span> 小石川中等教育学校 軽音楽研究会 定期演奏会での宣伝</div>
-        <div class="option"><span class="circle"></span> バンド関係者</div>
-        <div class="option"><span class="circle"></span> その他（&nbsp;<span style="border-bottom:1px solid #999; display:inline-block; width:180pt;">&nbsp;</span>&nbsp;）</div>
+        <div> 1. メンバー［　　　　　　　　　　　　　　　　　　　　　　　　　　　　］からの紹介</div>
+        <div> 2. SNS ［ X / Instagram / Facebook / 他の媒体　　　　　　　　　　　　　　　］での宣伝</div>
+        <div> 3. 小石川中等教育学校 軽音楽研究会 定期演奏会での宣伝</div>
+        <div style="display:flex; gap:24pt;">
+            <span>4. バンド関係者</span>
+            <span>5. その他［　　　　　　　　　　　　　　　　　　　　］</span>
+        </div>
     </div>
 </div>
 
 <!-- Q2 -->
 <div class="question">
-    <p class="question-label">当バンドへのご来場は、今回で何回目ですか。</p>
+    <p class="question-label">当バンドへのご来場は、今回で何回目ですか？</p>
     <div class="options">
-        <div class="option"><span class="circle"></span> はじめて</div>
-        <div class="option"><span class="circle"></span> 2回目</div>
-        <div class="option"><span class="circle"></span> 3回目</div>
-        <div class="option"><span class="circle"></span> 4回目</div>
-        <div class="option"><span class="circle"></span> 5回目以上</div>
+        <div class="option">1. はじめて</div>
+        <div class="option">2. 2回目</div>
+        <div class="option">3. 3回目</div>
+        <div class="option">4. 4回目以上</div>
     </div>
 </div>
 
 <!-- Q3 -->
 <div class="question">
-    <p class="question-label">印象に残った曲を教えてください（よろしければ理由もお聞かせください）。<span style="font-weight:400; font-size:8.5pt; color:#555;">（複数選択可）</span></p>
-    <div class="options-col">
-        <div class="option"><span class="box"></span> Underdog</div>
-        <div class="option"><span class="box"></span> Your scenery story</div>
-        <div class="option"><span class="box"></span> Dolphin dance</div>
-        <div class="option"><span class="box"></span> Skittish</div>
-        <div class="option"><span class="box"></span> Open city</div>
-        <div class="option"><span class="box"></span> All that</div>
-        <div class="option"><span class="box"></span> Vaguely reminiscent</div>
-        <div class="option"><span class="box"></span> The last theme song</div>
-        <div class="option"><span class="box"></span> December song</div>
+    <p class="question-label">印象に残った曲をお教えください（よろしければ理由もお聞かせください）。<span style="font-weight:400; font-size:8.5pt; color:#1a1a1a;">（複数選択可）</span></p>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">Underdog</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">Your scenery story</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">Dolphin dance</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">Skittish</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">Open city</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">All that</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">Vaguely reminiscent</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">The last theme song</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">December song</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">December song</span><span class="option-reason"></span></div>
+    <div class="option-with-reason"><span class="box"></span><span class="option-name">encore</span><span class="option-reason"></span></div>
     </div>
-    <div class="reason">
-        <p class="reason-label">理由：</p>
-        <div class="write-line"></div>
-        <div class="write-line"></div>
-    </div>
-</div>
+
+<p class="page-continue">▼ 裏面に続きます</p>
+
+<div style="page-break-before: always;"></div>
+
+<div class="back-page">
 
 <!-- Q4 -->
 <div class="question">
-    <p class="question-label">印象に残ったプレイヤーを教えてください（よろしければ理由もお聞かせください）。<span style="font-weight:400; font-size:8.5pt; color:#555;">（複数選択可）</span></p>
-    <div class="options-col options-col-3">
-        <div class="option"><span class="box"></span> As. 高村治男</div>
-        <div class="option"><span class="box"></span> As. 石川麻由</div>
-        <div class="option"><span class="box"></span> Ts. 祖山亮治</div>
-        <div class="option"><span class="box"></span> Ts. 高見優希</div>
-        <div class="option"><span class="box"></span> Bs. 濱篤夫</div>
-        <div class="option"><span class="box"></span> Tb. 山本統</div>
-        <div class="option"><span class="box"></span> Tb. 増子友隆</div>
-        <div class="option"><span class="box"></span> Tb. 湯浅歩</div>
-        <div class="option"><span class="box"></span> BTb. 山下紘史</div>
-        <div class="option"><span class="box"></span> Tp. 大河内慧</div>
-        <div class="option"><span class="box"></span> Tp. 上方悌弘</div>
-        <div class="option"><span class="box"></span> Tp. 田中竜資</div>
-        <div class="option"><span class="box"></span> Tp. 肥澤拓也</div>
-        <div class="option"><span class="box"></span> Tp. 田中誠一</div>
-        <div class="option"><span class="box"></span> Drs. 川田卓門</div>
-        <div class="option"><span class="box"></span> Ba. 碓井拓海</div>
-        <div class="option"><span class="box"></span> Pf. 葛西翔</div>
-        <div class="option"><span class="box"></span> Gt. 梶原章正</div>
-    </div>
-    <div class="reason">
-        <p class="reason-label">理由：</p>
-        <div class="write-line"></div>
-        <div class="write-line"></div>
+    <p class="question-label">印象に残ったプレイヤーをお教えください（よろしければ理由もお聞かせください）。<span style="font-weight:400; font-size:8.5pt; color:#1a1a1a;">（複数選択可）</span></p>
+    <div class="player-grid">
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">As. 高村治男</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">As. 石川麻由</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Ts. 祖山亮治</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Ts. 高見優希</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Bs. 濱篤夫</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Tb. 山本統</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Tb. 増子友隆</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Tb. 湯浅歩</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">BTb. 山下紘史</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Tp. 大河内慧</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Tp. 上方悌弘</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Tp. 田中竜資</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Tp. 肥澤拓也</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Tp. 田中誠一</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Drs. 川田卓門</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Ba. 碓井拓海</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Pf. 葛西翔</span><span class="option-reason"></span></div>
+        <div class="option-with-reason"><span class="box"></span><span class="option-name">Gt. 梶原章正</span><span class="option-reason"></span></div>
     </div>
 </div>
 
 <!-- Q5 -->
 <div class="question">
-    <p class="question-label">今後当バンドの演奏で聴いてみたい曲はありますか。</p>
+    <p class="question-label">今後当バンドの演奏で聴いてみたい曲目はありますか？</p>
     <div class="write-lines">
-        <div class="write-line"></div>
-        <div class="write-line"></div>
+        <div class="write-line-large" style="height: 30pt;"></div>
     </div>
 </div>
 
 <!-- Q6 -->
 <div class="question">
-    <p class="question-label">本日のご感想・当バンドへのご要望など、ご自由にご記入ください。</p>
+    <p class="question-label">本日のご感想・当バンドへのご要望など、自由にご記入ください。</p>
     <div class="write-lines">
-        <div class="write-line"></div>
-        <div class="write-line"></div>
-        <div class="write-line"></div>
+        <div class="write-line-large" style="height: 50pt;"></div>
     </div>
 </div>
 
-<!-- Q7 -->
+<!-- Q7 & Q8 -->
+<div class="question name-job-row">
+    <p class="question-label-inline">お名前［　　　　　　　　　　　　　　　　　　　］</p>
+    <p class="question-label-inline">ご職業［　　　　　　　　　　　　　　］</p>
+</div>
+<!-- Q10 -->
 <div class="question">
-    <p class="question-label">お名前</p>
-    <div class="write-lines">
-        <div class="write-line-short"></div>
-    </div>
+    <p class="question-label">ご年齢［〜10代 / 20代 / 30代 / 40代 / 50代 / 60代 / 70代〜］</p>
 </div>
-
-<hr>
 
 <div class="footer">
-    <p class="footer-thanks">ご協力ありがとうございました。</p>
-    <p>2026/4/25 Studio One Jazz Orchestra</p>
-
-    <div class="qr-area">
-        <div class="qr-placeholder">QR Code</div>
-        <p class="qr-caption">▲ 曲目解説はこちら ▲</p>
-    </div>
+    <span class="footer-thanks">ご協力ありがとうございました。</span>
+    <span class="footer-date">2026/4/25 Studio One Jazz Orchestra</span>
 </div>
+
+</div><!-- .back-page -->
 
 </body>
 </html>
